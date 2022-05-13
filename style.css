@@ -11,13 +11,16 @@
     display: flex;
     flex-flow: column;
     align-items: center;
+    padding: 1em;
 }
 .screen {
     display: flex;
     flex-direction: row-reverse;
-    border: 1px solid lightgray;
-    width: 8em;
+    border: 3px solid lightgray;
+    box-shadow: 3px 3px lightgreen;
+    width: 7.8em;
     padding-right: 4px;
+    margin: 8px;
     align-items: flex-start;
 }
 
