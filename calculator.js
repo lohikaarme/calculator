@@ -12,8 +12,6 @@ let multiply = (a, b) => a * b;
 let divide = (a, b) => a / b;
 let operate = (a, b, operator) => operator(a, b);
 
-let updateDisplay = (displayValue, input) => displayValue = displayValue.concat(input)
-
 const keys = document.querySelectorAll('[data-key]');
 const keyPress = keys.forEach((key) => { // keyPress accepts a button press and assigns data-key attribute to input
 	key.addEventListener('click', () => {
