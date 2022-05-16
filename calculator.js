@@ -25,7 +25,10 @@ const keyPress = keys.forEach((key) => { // keyPress accepts a button press and 
 const operators = document.querySelectorAll('[data-operator]');
 const operatorPress = operators.forEach((operator) => { 
 	operator.addEventListener('click', () => {
+		storedValue.push(+displayValue);
+		displayValue = '';
 		input = operator.getAttribute('data-operator');
+		storedOperator.push(input);
 		screen.textContent = input;
 		console.log(input);
 	});
