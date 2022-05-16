@@ -17,7 +17,7 @@ const keyPress = keys.forEach((key) => { // keyPress accepts a button press and 
 	key.addEventListener('click', () => {
 		input = key.getAttribute('data-key');
 		displayValue = displayValue.concat(input);
-		screen.textContent = displayValue;
+		updateScreen();
 		console.log(input);
 	});
 });
@@ -31,6 +31,43 @@ const operatorPress = operators.forEach((operator) => {
 		console.log(input);
 	});
 });
+
+let calculate = () => {
+	total = storedValue[0];
+	for (let i = 0; i <= storedOperator.length; i++) {
+		let a = storedOperator[i],
+				b = storedValue[i+1];
+		switch (a) {
+			case '+':
+				total = add (total,b);
+				break;
+			case '-':
+				total = subtract (total,b);
+				break;
+			case '*':
+				total = multiply (total,b);
+				break;
+			case '%':
+				total = divide (total,b);
+				break;
+			case '=':
+				let temp = total;
+				clearMemory();
+				displayValue = temp;
+				updateMemory();
+				displayValue = temp;
+				updateScreen();
+				break;
+			default:
+				break;
+		}
+	}
+};
+
+let updateScreen = (input) => {
+	if (!input) input = displayValue;
+	screen.textContent = input;
+};
 
 let updateMemory = (input) => {
 	storedOperator.push(input);
