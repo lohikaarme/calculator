@@ -1,15 +1,15 @@
 
-let storedValueA = 0;
-let storedValueB = 0;
+let storedValue = [];
+let storedOperator = [];
 let input = '';
-const screen = document.querySelector('.screen');
-let displayValue = '';
 let total = 0;
+let displayValue = '';
+const screen = document.querySelector('.screen');
+
 let add = (a, b) => a + b;
 let subtract = (a, b) => a - b;
 let multiply = (a, b) => a * b;
 let divide = (a, b) => a / b;
-
 let operate = (a, b, operator) => operator(a, b);
 
 const keys = document.querySelectorAll('[data-key]');
@@ -18,6 +18,15 @@ const keyPress = keys.forEach((key) => { // keyPress accepts a button press and 
 		input = key.getAttribute('data-key');
 		displayValue = displayValue.concat(input);
 		screen.textContent = displayValue;
+		console.log(input);
+	});
+});
+
+const operators = document.querySelectorAll('[data-operator]');
+const operatorPress = operators.forEach((operator) => { 
+	operator.addEventListener('click', () => {
+		input = operator.getAttribute('data-operator');
+		screen.textContent = input;
 		console.log(input);
 	});
 });
