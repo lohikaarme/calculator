@@ -10,7 +10,12 @@ let add = (a, b) => a + b;
 let subtract = (a, b) => a - b;
 let multiply = (a, b) => a * b;
 let divide = (a, b) => a / b;
-let operate = (a, b, operator) => operator(a, b);
+let operate = (a, b, operator) => {
+	if (operator == '+') return add(a, b);
+	if (operator == '-') return subtract(a, b);
+	if (operator == '*') return multiply(a, b);
+	if (operator == '%') return divided(a, b);
+};
 
 const keys = document.querySelectorAll('[data-key]');
 const keyPress = keys.forEach((key) => { // keyPress accepts a button press and assigns data-key attribute to input
