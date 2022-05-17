@@ -10,11 +10,29 @@ let add = (a, b) => a + b;
 let subtract = (a, b) => a - b;
 let multiply = (a, b) => a * b;
 let divide = (a, b) => a / b;
+
 let operate = (a, b, operator) => {
-	if (operator == '+') return add(a, b);
-	if (operator == '-') return subtract(a, b);
-	if (operator == '*') return multiply(a, b);
-	if (operator == '%') return divide(a, b);
+	switch (operator) {
+		case '+':
+			return add(a, b);
+			break;
+		case '-':
+			return subtract(a, b);
+			break;
+		case '*':
+			return multiply(a, b);
+			break;
+		case '%':
+			return divide(a, b);
+			break;
+		case '=':
+			break;
+		case 'blank':
+			return a;
+			break;
+		default:
+			break;
+	}
 };
 
 const keys = document.querySelectorAll('[data-key]');
@@ -39,33 +57,14 @@ const operatorPress = operators.forEach((operator) => {
 
 let calculate = () => {
 	total = storedValue[0];
-	for (let i = 0; i <= storedOperator.length; i++) {
-		let a = storedOperator[i],
-				b = storedValue[i+1];
-		switch (a) {
-			case '+':
-				total = add (total,b);
-				break;
-			case '-':
-				total = subtract (total,b);
-				break;
-			case '*':
-				total = multiply (total,b);
-				break;
-			case '%':
-				total = divide (total,b);
-				break;
-			case '=':
-				let temp = total;
-				clearMemory();
-				displayValue = temp;
-				updateMemory();
-				displayValue = temp;
-				updateScreen();
-				break;
-			default:
-				break;
-		}
+	for (let i = 0; i < (storedOperator.length -1); i++) {
+		total = operate(total, storedValue[i + 1], storedOperator[i]);
+	let temp = total;
+	clearMemory();
+	displayValue = temp;
+	updateScreen();
+	updateMemory('blank');
+
 	}
 };
 
