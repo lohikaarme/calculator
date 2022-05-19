@@ -22,7 +22,7 @@ let operate = (a, b, operator) => {
 		case '%':
 			return divide(a, b);
 		case '=':
-			break;
+			return total;
 		default:
 			break;
 	}
