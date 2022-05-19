@@ -19,9 +19,17 @@ let operate = (a, b, operator) => {
 			return subtract(a, b);
 		case '*':
 			return multiply(a, b);
-		case '%':
+		case '/':
 			return divide(a, b);
 		case '=':
+			return total;
+		case 'clr':
+			total = 0.00;
+			storedValue = '';
+			storedOperator = '';
+			input = '';
+			displayValue = ' ';
+			updateScreen((0).toFixed(2));
 			return total;
 		default:
 			break;
@@ -42,13 +50,13 @@ const operators = document.querySelectorAll('[data-operator]');
 const operatorPress = operators.forEach((operator) => { 
 	operator.addEventListener('click', () => {
 		input = operator.getAttribute('data-operator');
-		// updateMemory(input);
-		if (!storedOperator) {
+		if (input == 'clr') operate(0,0,input);
+		else if (!storedOperator) {
 			total = displayValue;
 			storedOperator = input;
 			displayValue = ''
 		} else {
-			total = operate(total, displayValue, storedOperator);
+			total = (Math.round(operate(total, displayValue, storedOperator)*100) / 100).toFixed(2);
 			storedOperator = input;
 			displayValue = ''
 			updateScreen(total)
