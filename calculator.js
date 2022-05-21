@@ -40,6 +40,7 @@ const keys = document.querySelectorAll('[data-key]');
 const keyPress = keys.forEach((key) => { // keyPress accepts a button press and assigns data-key attribute to input
 	key.addEventListener('click', () => {
 		input = key.getAttribute('data-key');
+		if (input == '.' && displayValue.includes('.')) return;
 		displayValue = displayValue.concat(input);
 		updateScreen();
 		console.log(input);
