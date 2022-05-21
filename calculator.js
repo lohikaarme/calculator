@@ -2,7 +2,7 @@
 let storedValue = '';
 let storedOperator = '';
 let input = '';
-let total = 0;
+let total = '';
 let displayValue = ' ';
 const screen = document.querySelector('.screen');
 
@@ -24,7 +24,7 @@ let operate = (a, b, operator) => {
 		case '=':
 			return total;
 		case 'clr':
-			total = 0.00;
+			total = '';
 			storedValue = '';
 			storedOperator = '';
 			input = '';
@@ -52,7 +52,11 @@ const operatorPress = operators.forEach((operator) => {
 	operator.addEventListener('click', () => {
 		input = operator.getAttribute('data-operator');
 		if (input == 'clr') operate(0,0,input);
-		else if (!storedOperator) {
+		else if (storedOperator == '=' && displayValue != '') {
+			total = displayValue;
+			displayValue = ''
+			storedOperator = input;
+		} else if (!storedOperator) {
 			total = displayValue;
 			storedOperator = input;
 			displayValue = ''
