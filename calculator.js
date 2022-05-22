@@ -41,6 +41,7 @@ const keyPress = keys.forEach((key) => { // keyPress accepts a button press and 
 	key.addEventListener('click', () => {
 		input = key.getAttribute('data-key');
 		if (input == '.' && displayValue.includes('.')) return;
+		if (input == 'bksp' ) return updateScreen(displayValue = displayValue.substr(0,displayValue.length-1));
 		displayValue = displayValue.concat(input);
 		updateScreen();
 		console.log(input);
