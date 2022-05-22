@@ -23,7 +23,7 @@ let operate = (a, b, operator) => {
 			return divide(a, b);
 		case 'Enter':
 			return total;
-		case 'clr':
+		case 'Escape':
 			total = '';
 			storedValue = '';
 			storedOperator = '';
@@ -52,7 +52,7 @@ const operators = document.querySelectorAll('[data-operator]');
 const operatorPress = operators.forEach((operator) => { 
 	operator.addEventListener('click', () => {
 		input = operator.getAttribute('data-operator');
-		if (input == 'clr') operate(0,0,input);
+		if (input == 'Escape') operate(0,0,input);
 		else if (storedOperator == '=' && displayValue != '') {
 			total = displayValue;
 			displayValue = ''
@@ -76,10 +76,9 @@ let updateScreen = (input) => {
 };
 
 let boardPress = document.addEventListener('keydown', (e) => {
-	console.log(e);
-	test = document.querySelector(`button[data-key="${e.key}"]`);
-	console.log(test);
-	test.click();
+	let toClick = document.querySelector(`button[data-key="${e.key}"]`);
+	if (!toClick) toClick = document.querySelector(`button[data-operator="${e.key}"]`);
+	toClick.click();
 })
 
 
