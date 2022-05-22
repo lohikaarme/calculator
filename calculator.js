@@ -21,7 +21,7 @@ let operate = (a, b, operator) => {
 			return multiply(a, b);
 		case '/':
 			return divide(a, b);
-		case '=':
+		case 'Enter':
 			return total;
 		case 'clr':
 			total = '';
@@ -41,7 +41,7 @@ const keyPress = keys.forEach((key) => { // keyPress accepts a button press and 
 	key.addEventListener('click', () => {
 		input = key.getAttribute('data-key');
 		if (input == '.' && displayValue.includes('.')) return;
-		if (input == 'bksp' ) return updateScreen(displayValue = displayValue.substr(0,displayValue.length-1));
+		if (input == 'Backspace' ) return updateScreen(displayValue = displayValue.substr(0,displayValue.length-1));
 		displayValue = displayValue.concat(input);
 		updateScreen();
 		console.log(input);
@@ -74,6 +74,14 @@ let updateScreen = (input) => {
 	if (!input) input = displayValue;
 	screen.textContent = input;
 };
+
+let boardPress = document.addEventListener('keydown', (e) => {
+	console.log(e);
+	test = document.querySelector(`button[data-key="${e.key}"]`);
+	console.log(test);
+	test.click();
+})
+
 
 console.log(typeof keys)
 console.log(keys)
