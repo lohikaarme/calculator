@@ -81,9 +81,3 @@ let boardPress = document.addEventListener('keydown', (e) => {
 	toClick.click();
 })
 
-
-console.log(typeof keys)
-console.log(keys)
-
-console.log(operate(3,5,multiply));
-
