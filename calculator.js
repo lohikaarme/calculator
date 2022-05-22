@@ -53,7 +53,7 @@ const operatorPress = operators.forEach((operator) => {
 	operator.addEventListener('click', () => {
 		input = operator.getAttribute('data-operator');
 		if (input == 'Escape') operate(0,0,input);
-		else if (storedOperator == '=' && displayValue != '') {
+		else if (storedOperator == 'Enter' && displayValue != '') {
 			total = displayValue;
 			displayValue = ''
 			storedOperator = input;
